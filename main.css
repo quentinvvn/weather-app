@@ -63,6 +63,11 @@ h6 {
     padding: 4rem;
     background: #f6f6f8;
 }
+
+form{
+    width: 100%;
+}
+
 .input-group {
     position: relative;
     display: flex;
