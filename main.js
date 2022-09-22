@@ -10,10 +10,10 @@ function getLocation() {
 }
 
 function maPosition(position) {
-  var infopos = "Position déterminée :\n";
-  infopos += "Latitude : " + position.coords.latitude + "\n";
-  infopos += "Longitude: " + position.coords.longitude + "\n";
-  document.getElementById("infoposition").innerHTML = infopos;
+  userlat = position.coords.latitude;
+  userlon = position.coords.longitude;
+  recupDonnees();
+  return userlat, userlon;
 }
 
 function erreurPosition(error) {
@@ -53,10 +53,47 @@ function chercher() {
           userlat = response[0]["lat"];
           userlon = response[0]["lon"];
           console.log(response);
+          recupDonnees();
+          return userlat, userlon;
         }
       })
       .fail(function (error) {
         alert(error);
       });
   }
+}
+
+function recupDonnees() {
+  $.ajax({
+    url: "https://api.openweathermap.org/data/2.5/weather",
+    type: "get",
+    data:
+      "lat=" +
+      userlat +
+      "&lon=" +
+      userlon +
+      "&appid=b59107cebd701651b8b2c44483acf61d",
+  })
+    .done(function (result) {
+      if (result != "") {
+        console.log(result);
+        document.getElementById("temp").innerHTML =
+          Math.trunc(
+            ((((result["main"]["temp"] * 9) / 5 + 32) / 10 - 32) * 5) / 9
+          ) + "°C";
+        document.getElementById("feels-like").innerHTML =
+          "Ressenti = " +
+          Math.trunc(
+            ((((result["main"]["feels_like"] * 9) / 5 + 32) / 10 - 32) * 5) / 9
+          ) +
+          "°C";
+        document.getElementById("description").innerHTML =
+          result["weather"][0]["description"];
+        document.getElementById("city").innerHTML =
+          result["name"] + ", " + result["sys"]["country"];
+      }
+    })
+    .fail(function (error) {
+      alert(error);
+    });
 }
