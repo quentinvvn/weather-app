@@ -7,8 +7,8 @@
 }
 
 :root {
-    --lef-col-width: 33%;
-    --placeholder-color: #323232;
+    --lef-col-width: 25%;
+    --placeholder-color: #fff;
     --swiper-navigation-size: 30px !important;
 }
 
@@ -17,10 +17,10 @@
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
-body{
+body {
     display: block;
     margin: 0;
     font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
@@ -35,8 +35,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-    color: #000;
+h6,
+span {
+    color: #fff;
     margin-block-start: 0;
     margin-block-end: 0;
 }
@@ -50,7 +51,7 @@ h6 {
     width: var(--lef-col-width);
     position: fixed;
     inset: 0;
-    background: #fff;
+    background: #19202d;
     padding: 4rem;
 }
 
@@ -59,10 +60,10 @@ h6 {
     flex: 1;
     margin-left: var(--lef-col-width);
     padding: 4rem;
-    background: #f6f6f8;
+    background: #232b39;
 }
 
-form{
+form {
     width: 100%;
 }
 
@@ -104,16 +105,17 @@ form{
 .input-group input {
     padding: 1.3rem 4rem;
     font-size: 15px;
-    background: #f8f8f8;
+    background: #232b39;
+    color: #bdbdbd;
     text-transform: capitalize;
     width: 100%;
     outline: none;
     border: none;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-    border-radius: 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .input-group input::placeholder {
@@ -124,6 +126,56 @@ form{
 
 .heading {
     margin: 3rem 0;
+}
+
+.weather-icon {
+    width: 70%;
+    margin-top: 10%;
+}
+
+#weather-icon {
+    display: block;
+    width: -webkit-fill-available;
+}
+
+.temp {
+    font-size: 10rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    display: flex;
+    font-family: "Poppins";
+    font-weight: 300;
+}
+
+.temp span {
+    font-size: 5rem;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.feels-like {
+    margin-top: -3rem;
+    color: #7f7f7f;
+}
+
+.day {
+    font-size: 3rem;
+}
+
+.day span {
+    color: #7f7f7f;
+}
+
+.description {
+    font-size: 2rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.description i {
+    font-size: 3rem;
 }
 
 .top-header {
@@ -141,7 +193,8 @@ form{
     font-weight: 500;
     width: 40px;
     height: 40px;
-    background: #e8e6e3;
+    background: #fff;
+    color: black;
     border-radius: 50%;
     font-size: 1.8rem;
     display: flex;
@@ -159,7 +212,14 @@ form{
     flex-direction: column;
 }
 
-.col-left .loader{
+.divider {
+    height: 1px;
+    width: 100%;
+    background: #e0e0e0;
+    margin: 2rem 0;
+}
+
+.col-left .loader {
     height: 40vh;
 }
 
@@ -169,6 +229,7 @@ form{
 }
 
 .loader .spinner {
+    margin-left: calc(50% - 20px);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -180,9 +241,66 @@ form{
 }
 
 .loader-text {
+    text-align: center;
     font-size: 1.9rem;
-    color: #000;
+    color: #fff;
     margin-top: 1rem;
+}
+
+.highlight-container {
+    display: grid;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.h-card {
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    border-radius: 19px 19px 19px 19px;
+    background-color: #19202d;
+    padding: 5%;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.h-title {
+    margin-bottom: 1rem;
+}
+
+.h-value h1 {
+    font-size: 2em;
+}
+
+#humidity-icon {
+    width: 15%;
+}
+
+#wind-icon {
+    width: 20%;
+}
+
+#pressure-icon {
+    width: 12%;
+}
+
+#sunrise-icon {
+    width: 20%;
+}
+
+#clouds-icon {
+    width: 20%;
+}
+
+#sunset-icon {
+    width: 20%;
+}
+
+.footer {
+    display: flex;
+    padding-top: 4rem;
+    flex-wrap: wrap;
 }
 
 .footer {
@@ -208,40 +326,16 @@ form{
     margin-left: 0.4rem;
 }
 
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+    color: #7f7f7f;
+}
+
 
 @keyframes loader {
     to {
         transform: rotate(360deg);
-    }
-}
-
-@media (min-width: 1200px) {
-    :root {
-        --lef-col-width: 25%;
-    }
-
-    .col-right {
-        padding: 4rem 8rem;
-    }
-}
-
-@media (max-width: 980px) {
-
-    .col-right {
-        padding: 2rem;
-    }
-
-    .col-left {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 800px) {
-    .col-right {
-        padding: 1rem;
-    }
-
-    .col-left {
-        padding: 1.5rem;
     }
 }
