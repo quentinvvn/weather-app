@@ -16,67 +16,104 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
-<body>
-    <section class="container">
-        <div class="col-left">
-            <div class="input-group">
-                <span onclick="getLocation()"><i class="fa-solid fa-location-crosshairs location-icon"></i></span>
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <form id="form" onsubmit="return false;">
-                    <input type="text" onchange="chercher();" on id="ville" placeholder="Rechercher une ville...">
-                </form>
-            </div>
-            <div id="weather-icon"></div>
-            <h2 class="temp" id="temp"></h2>
-            <div class="feels-like">
-                <h4 id="feels-like"></h4>
-            </div>
-            <div class="description" id="description"></div>
-            <div class="date"></div>
-            <div class="city" id="city"></div>
+<body class="container">
+    <div class="col-left">
+        <div class="input-group">
+            <span onclick="getLocation()"><i class="fa-solid fa-location-crosshairs location-icon"></i></span>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <form id="form" onsubmit="return false;">
+                <input class="input-ville" type="text" onchange="chercher();" on id="ville"
+                    placeholder="Rechercher une ville...">
+            </form>
         </div>
-        <div class="col-right">
-            <div class="top-header">
-                <h2 class="heading">Aujourd'hui</h2>
+        <div class="weather-icon"><img id="weather-icon" src="" alt="" /></div>
+        <h2 class="temp" id="temp"></h2>
+        <div class="feels-like">
+            <h4 id="feels-like"></h4>
+        </div>
+        <h3 class="description" id="description"></h3>
+        <div class="divider"></div>
+        <h4 class="day" id="day"></h4>
+        <h3 class="city" id="city">
+            <div class="loader">
+                <div class="spinner"></div>
+                <span class="loader-text">Chargement...</span>
+            </div>
+        </h3>
+    </div>
+    <div class="col-right">
+        <div class="top-header">
+            <h2 class="heading">Aujourd'hui</h2>
 
-                <div class="units">
-                    <span>°C</span>
-                    <span>°F</span>
+            <div class="units">
+                <span>°C</span>
+                <span>°F</span>
+            </div>
+        </div>
+
+        <div class="loader">
+            <div class="spinner"></div>
+        </div>
+
+        <h2 class="heading">Temps forts d'aujourd'hui</h2>
+        <div class="highlight-container">
+            <div class="h-card">
+                <h4 class="h-title" id="humidity"></h4>
+                <img id="humidity-icon" src="" alt="" />
+                <div class="h-value" id="humidity-value"></div>
+            </div>
+            <div class="h-card">
+                <h4 class="h-title" id="wind-speed"></h4>
+                <img id="wind-icon" src="" alt="" />
+                <div class="h-value" id="wind-value">
+                    <div class="loader">
+                        <div class="spinner"></div>
+                    </div>
                 </div>
             </div>
-
-            <div class="loader">
-                <div class="spinner"></div>
+            <div class="h-card">
+                <h4 class="h-title" id="pressure"></h4>
+                <img id="pressure-icon" src="" alt="" />
+                <div class="h-value" id="pressure-value"></div>
             </div>
-
-            <h2 class="heading">Temps forts d'aujourd'hui</h2>
-
-            <div class="loader">
-                <div class="spinner"></div>
+            <div class="h-card">
+                <h4 class="h-title" id="sunrise"></h4>
+                <img id="sunrise-icon" src="" alt="" />
+                <div class="h-value" id="sunrise-value"></div>
             </div>
-
-            <h2 class="heading">Cette semaine</h2>
-
-            <div class="loader">
-                <div class="spinner"></div>
+            <div class="h-card">
+                <h4 class="h-title" id="cloud"></h4>
+                <img id="clouds-icon" src="" alt="" />
+                <div class="h-value" id="cloud-value"></div>
             </div>
-
-            <footer class="footer">
-                <a href="https://github.com/quentinvvn">
-                    <i class="fa-brands fa-github"></i> <span>GitHub</span>
-                </a>
-                <a href="https://github.com/quentinvvn/weather-app">
-                    <i class="fa-solid fa-code-fork"></i> <span>Fork</span>
-                </a>
-                <a href="https://www.instagram.com/quentinvvn">
-                    <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
-                </a>
-            </footer>
+            <div class="h-card">
+                <h4 class="h-title" id="sunset"></h4>
+                <img id="sunset-icon" src="" alt="" />
+                <div class="h-value" id="sunset-value"></div>
+            </div>
         </div>
-    </section>
+
+
+        <h2 class="heading">Cette semaine</h2>
+
+        <div class="loader">
+            <div class="spinner"></div>
+        </div>
+
+        <footer class="footer">
+            <a href="https://github.com/quentinvvn">
+                <i class="fa-brands fa-github"></i> <span>GitHub</span>
+            </a>
+            <a href="https://github.com/quentinvvn/weather-app">
+                <i class="fa-solid fa-code-fork"></i> <span>Fork</span>
+            </a>
+            <a href="https://www.instagram.com/quentinvvn">
+                <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
+            </a>
+        </footer>
+    </div>
 </body>
 
 </html>
