@@ -209,6 +209,7 @@ form {
 
 .loader {
     display: flex;
+    height: 20%;
     flex-direction: column;
 }
 
@@ -259,7 +260,6 @@ form {
     -webkit-border-radius: 19px 19px 19px 19px;
     -moz-border-radius: 19px 19px 19px 19px;
     border-radius: 19px 19px 19px 19px;
-    background-color: #19202d;
     padding: 5%;
     text-align: center;
     justify-content: space-evenly;
