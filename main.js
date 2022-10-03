@@ -78,6 +78,19 @@ function recupDonnees() {
     "Vendredi",
     "Samedi",
   ];
+  // Trouver une autre technique
+  var element = document.getElementsByClassName("h-card")[0];
+  var element1 = document.getElementsByClassName("h-card")[1];
+  var element2 = document.getElementsByClassName("h-card")[2];
+  var element3 = document.getElementsByClassName("h-card")[3];
+  var element4 = document.getElementsByClassName("h-card")[4];
+  var element5 = document.getElementsByClassName("h-card")[5];
+  element.style.background = "#19202d";
+  element1.style.background = "#19202d";
+  element2.style.background = "#19202d";
+  element3.style.background = "#19202d";
+  element4.style.background = "#19202d";
+  element5.style.background = "#19202d";
   var date = new Date();
   timeMinutes = date.getMinutes();
   if (timeMinutes < 10) {
@@ -89,7 +102,9 @@ function recupDonnees() {
     userlat +
     "&lon=" +
     userlon +
-    "&appid=b59107cebd701651b8b2c44483acf61d";
+    "&units=" +
+    "metric" +
+    "&lang=fr&appid=b59107cebd701651b8b2c44483acf61d";
   fetch(url)
     .then(function (result) {
       return result.json();
@@ -102,12 +117,11 @@ function recupDonnees() {
         document.getElementById("weather-icon").src =
           "./weather_icons/" + result["weather"][0]["icon"] + ".png";
         document.getElementById("temp").innerHTML =
-          Math.trunc(result["main"]["temp"] - 273, 15) + "<span>°C</span>";
+          Math.trunc(result["main"]["temp"]) + "<span>°C</span>";
         document.getElementById("feels-like").innerHTML =
-          "Ressenti : " +
-          Math.trunc(result["main"]["feels_like"] - 273, 15) +
-          "°C";
+          "Ressenti : " + Math.trunc(result["main"]["feels_like"]) + "°C";
         document.getElementById("description").innerHTML =
+          '<i class="fa-brands fa-cloudversify">&thinsp;</i>' +
           result["weather"][0]["description"];
         document.getElementById("day").innerHTML = current_time;
         document.getElementById("city").innerHTML =
@@ -133,8 +147,8 @@ function recupDonnees() {
         document.getElementById("cloud").innerHTML = "Cloud";
         document.getElementById("clouds-icon").src =
           "./weather_icons/clouds.png";
-        // document.getElementById("cloud-value").innerHTML =
-        //   result["coulds"]["all"];
+        document.getElementById("cloud-value").innerHTML =
+          "<h2>" + result["clouds"]["all"] + " %</h2>";
         document.getElementById("sunrise").innerHTML = "Sunrise";
         document.getElementById("sunrise-icon").src =
           "./weather_icons/sunrise.png";
