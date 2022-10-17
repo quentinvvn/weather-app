@@ -18,6 +18,7 @@
 
 html {
     font-size: 62.5%;
+    background: #232b39;
 }
 
 body {
@@ -277,6 +278,9 @@ form {
     width: 15%;
 }
 
+img{
+    width: 20%;
+}
 #wind-icon {
     width: 20%;
 }
