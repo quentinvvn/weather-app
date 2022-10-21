@@ -233,10 +233,11 @@ function recupDonneesSemaine(){
         }
         document.getElementById("d+" + m).innerHTML = "<h2>" + result["fcst_day_" + m]["day_long"] +  "</h2>";
         document.getElementById("d+" + m + "Value").innerHTML = "<h2> Température Min: " + minTemp + " °C<br />Température Max: " + maxTemp + " °C</h2>";
-        document.getElementById("d+" + m + "Icon").src = result["fcst_day_" + m]["icon"]
+        document.getElementById("d+" + m + "Icon").src = result["fcst_day_" + m]["icon"];
+        var hauteur = document.getElementsByClassName("h-card")[2].offsetHeight;
+        document.getElementById("scroller").style.height = hauteur + 20 + "px";
       }
     })
-    changeBackground();
 }
 
 
@@ -244,6 +245,7 @@ function affichageDonnees(){
   recupDonnees();
   recupDonneesJour();
   recupDonneesSemaine();
+  changeBackground();
 }
 
 function changeBackground(){
