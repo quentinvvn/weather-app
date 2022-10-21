@@ -357,7 +357,6 @@ img{
 
 #scroller{
     scrollbar-width: 1px;
-    height: 135px;
 }
 
 @media screen and (max-width: 1400px) and (min-width: 1000px){
