@@ -161,11 +161,10 @@ async function recupDonnees() {
   return villeRecup;
 }
 
-async function recupDonneesJour(){
-  var resultat = await recupDonnees();
+function recupDonneesJour(){
   const url = 
-  "https://www.prevision-meteo.ch/services/json/" +
-  resultat;
+  "https://www.prevision-meteo.ch/services/json/lat=" +
+  userlat + "lng=" + userlon;
   fetch(url)
     .then(function (result) {
       return result.json();
@@ -182,7 +181,6 @@ async function recupDonneesJour(){
       }
       calcMaxHours();
       var NbrHoursCalc = calcMaxHours();
-      var iconTemps;
       for(let n = 1; n < NbrHoursCalc; n++){
         console.log(n);
         document.getElementsByClassName("highlight-container")[0].innerHTML += `
@@ -198,11 +196,10 @@ async function recupDonneesJour(){
     })
 }
 
-async function recupDonneesSemaine(){
-  var resultat = await recupDonnees();
+function recupDonneesSemaine(){
   const url = 
-  "https://www.prevision-meteo.ch/services/json/" +
-  resultat;
+  "https://www.prevision-meteo.ch/services/json/lat=" +
+  userlat + "lng=" + userlon;
   fetch(url)
     .then(function (result) {
       return result.json();
