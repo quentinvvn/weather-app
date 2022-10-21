@@ -267,6 +267,16 @@ form {
     justify-content: space-evenly;
 }
 
+.h-cardComplete {
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    border-radius: 19px 19px 19px 19px;
+    padding: 5%;
+    text-align: center;
+    background-color: #19202d;
+    justify-content: space-evenly;
+}
+
 .h-title {
     margin-bottom: 1rem;
 }
@@ -347,7 +357,7 @@ img{
 
 #scroller{
     scrollbar-width: 1px;
-    height: 10%;
+    height: 135px;
 }
 
 @media screen and (max-width: 1400px) and (min-width: 1000px){
