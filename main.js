@@ -149,6 +149,9 @@ async function recupDonnees() {
           "<h2>" + words2[1] + "</h2>";
         console.log(result);
         var villeRecup = result["name"];
+        document.getElementById("scroller").style.borderRadius = "19px 19px 19px 19px";
+        document.getElementById("scroller").style.border = "1px solid rgb(25, 32, 45)";
+        document.getElementById("scroller").style.overflow = "auto";
         return villeRecup;
       }
     })
@@ -183,7 +186,7 @@ async function recupDonneesJour(){
       for(let n = 1; n < NbrHoursCalc; n++){
         console.log(n);
         document.getElementsByClassName("highlight-container")[0].innerHTML += `
-        <div class="h-card">
+        <div class="h-cardComplete">
             <h4 class="h-title" id="h+` + n + `"></h4>
             <img id="h+` + n + `Icon" src="" alt="" />
             <div class="h-value" id="h+` + n + `Value"></div>
@@ -191,40 +194,6 @@ async function recupDonneesJour(){
         document.getElementById("h+" + n).innerHTML = (current_hours + n) + "h00";
         document.getElementById("h+" + n + "Value").innerHTML = "<h2>" + result["fcst_day_0"]["hourly_data"][(current_hours + n) + "H00"]["TMP2m"] + "<span>°C</span></h2>";
         document.getElementById("h+" + n + "Icon").src = result["fcst_day_0"]["hourly_data"][(current_hours + n) + "H00"]["ICON"]
-        // iconTemps = result["fcst_day_0"]["hourly_data"][(current_hours + n) + "H00"]["CONDITION_KEY"];
-        // console.log(iconTemps);
-        // if(iconTemps === "ensoleille" || "eclaircies"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/01d.png";
-        // } if(iconTemps === "nuit-claire"){
-        //   console.log("cc");
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/01n.png";
-        // } if(iconTemps === "ciel-voile"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/02d.png";
-        // } if(iconTemps === "nuit-legerement-voilee" || "nuit-bien-degagee" || "nuit-claire-et-stratus"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/02n.png";
-        // } if(iconTemps === "brouillard" || "fortement-nuageux" || "developpement-nuageux"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/03d.png";
-        // } if(iconTemps === "nuit-avec-developpement-nuageux"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/03n.png";
-        // } if(iconTemps === "stratus"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/04d.png";
-        // } if(iconTemps === "nuit-nuageuse"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/04n.png";
-        // } if(iconTemps === "averses-de-pluie-faible" || "averses-de-pluie-moderee" || "averses-de-pluie-forte" || "couvert-avec-averses" || "pluie-faible"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/10d.png";
-        // } if(iconTemps === "nuit-avec-averses"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/10n.png";
-        // } if(iconTemps === "pluie-forte" || "pluie-moderee"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/09d.png"
-        // } if(iconTemps === "faiblement-orageux" || "orage-modere" || "fortement-orageux"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/11d.png"
-        // } if(iconTemps === "nuit-faiblement-orageuse"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/11n.png"
-        // } if(iconTemps === "averses-de-neige-faible" || "nuit-avec-averses-de-neige-faible" || "neige-faible" || "neige-modere" || "neige-forte" || "pluie-et-neige-melee-faible" || "pluie-et-neige-melee-modere" || "pluie-et-neige-melee-forte"){
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/13d.png"
-        // } else{
-        //   document.getElementById("h+" + n + "Icon").src = "./weather_icons/uv.png"
-        // }
       }
     })
 }
@@ -242,9 +211,9 @@ async function recupDonneesSemaine(){
       console.log(result);
       
       document.getElementsByClassName("highlight-container")[2].innerHTML = "";
-      for(let m = 1; m < 4; m++){
+      for(let m = 1; m < 5; m++){
         document.getElementsByClassName("highlight-container")[2].innerHTML += `
-        <div class="h-card">
+        <div class="h-cardComplete">
             <h4 class="h-title" id="d+` + m + `"></h4>
             <img id="d+` + m + `Icon" src="" alt="" />
             <div class="h-value" id="d+` + m + `Value"></div>
@@ -252,26 +221,25 @@ async function recupDonneesSemaine(){
         var minTemp, maxTemp, dayTemp;
         for(let o = 0; o < 24; o++){
           dayTemp = result["fcst_day_" + m]["hourly_data"][o + "H00"]["TMP2m"];
-          if(o === 1){
-            console.log("o :" + o);
+          if(o == 1){
             minTemp = dayTemp;
             maxTemp = dayTemp;
           } else {
             if(dayTemp < minTemp){
-              console.log("m :" + o);
-              dayTemp = minTemp;
+              minTemp = dayTemp;
             } else if(dayTemp > maxTemp){
-              dayTemp = maxTemp;
+              maxTemp = dayTemp;
             } else {
   
             }
           }
         }
         document.getElementById("d+" + m).innerHTML = "<h2>" + result["fcst_day_" + m]["day_long"] +  "</h2>";
-        document.getElementById("d+" + m + "Value").innerHTML = "<h2> Température Min: " + minTemp + "<br />Température Max: " + maxTemp + "</h2>";
+        document.getElementById("d+" + m + "Value").innerHTML = "<h2> Température Min: " + minTemp + " °C<br />Température Max: " + maxTemp + " °C</h2>";
         document.getElementById("d+" + m + "Icon").src = result["fcst_day_" + m]["icon"]
       }
     })
+    changeBackground();
 }
 
 
@@ -279,6 +247,9 @@ function affichageDonnees(){
   recupDonnees();
   recupDonneesJour();
   recupDonneesSemaine();
+}
+
+function changeBackground(){
   var element = document.querySelectorAll('.h-card');
   for(i=0; i < element.length; i++) {
     element[i].style.background = "#19202d";
