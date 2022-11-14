@@ -176,13 +176,11 @@ function recupDonneesJour(){
       function calcMaxHours(){
         document.getElementsByClassName("highlight-container")[0].innerHTML = "";
         var NbrHours = 24 - current_hours;
-        console.log(NbrHours);
         return NbrHours
       }
       calcMaxHours();
       var NbrHoursCalc = calcMaxHours();
       for(let n = 1; n < NbrHoursCalc; n++){
-        console.log(n);
         document.getElementsByClassName("highlight-container")[0].innerHTML += `
         <div class="h-cardComplete">
             <h4 class="h-title" id="h+` + n + `"></h4>
@@ -252,5 +250,21 @@ function changeBackground(){
   var element = document.querySelectorAll('.h-card');
   for(i=0; i < element.length; i++) {
     element[i].style.background = "#19202d";
+  }
+}
+
+function search() {
+  let input = document.getElementById('ville').value
+  input=input.toLowerCase();
+  let x = document.getElementsByClassName('search');
+
+  for (i = 0; i < x.length; i++) { 
+      console.log(x[i]);
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+          x[i].style.display="list-item";
+      }
   }
 }

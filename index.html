@@ -4,141 +4,46 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Weather App</title>
+    <title>Main Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Get the weather forecast of your city!" />
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src='main.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 </head>
 
-<body class="container">
-    <div class="col-left">
-        <div class="input-group">
-            <span onclick="getLocation()"><i class="fa-solid fa-location-crosshairs location-icon"></i></span>
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <form id="form" onsubmit="return false;">
-                <input class="input-ville" type="text" onchange="chercher();" on id="ville"
-                    placeholder="Rechercher une ville...">
-            </form>
+<body>
+    <nav>
+        <div id="search">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Me contacter</a></li><br><br>
+            </ul>
         </div>
-        <div class="weather-icon"><img id="weather-icon" src="" alt="" /></div>
-        <h2 class="temp" id="temp"></h2>
-        <div class="feels-like">
-            <h4 id="feels-like"></h4>
+    </nav>
+
+    <div class="container">
+        <div class="left-card">
+            <img src="images/weather_app.png" alt="" />
+            <h1>Weather App</h1>
+            <div class="break"></div>
+            <p>Envie de connaître la météo d'un endroit <br />spécifique ? C'est par ici !</p>
+            <button><a href="weather-app.html">S'y rendre</a></button>
         </div>
-        <h3 class="description" id="description"></h3>
-        <div class="divider"></div>
-        <h4 class="day" id="day"></h4>
-        <h3 class="city" id="city">
-            <div class="loader">
-                <div class="spinner"></div>
-                <span class="loader-text">Chargement...</span>
-            </div>
-        </h3>
-    </div>
-    <div class="col-right">
-        <div class="top-header">
-            <h2 class="heading">Aujourd'hui</h2>
-
-            <div class="units">
-                <span>°C</span>
-                <span>°F</span>
-            </div>
+        <div class="middle-card">
+            <img src="images/commingsoon.jpg" alt="" />
+            <h1>For later...</h1>
+            <div class="break"></div>
+            <p>Application en cours de développement, prochainement disponible !</p>
+            <button><a href="#">S'y rendre</a></button>
         </div>
-        <div id="scroller">
-            <div class="highlight-container">
-                <div class="h-card">
-                    <h4 class="h-title" id="h+1"></h4>
-                    <div class="h-value" id="H+1Value">
-                    </div>
-                </div>
-                <div class="h-card">
-                    <h4 class="h-title" id="h+2"></h4>
-                    <div class="h-value" id="h+2Value">
-                        <div class="loader">
-                            <div class="spinner"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="right-card">
+            <img src="images/crypto.png" alt="" />
+            <h1>Crypto Currency</h1>
+            <div class="break"></div>
+            <p>Vos Cryptos, leurs valeures, et ce, en temps réel !</p>
+            <button><a href="crypto-currency.html">S'y rendre</a></button>
         </div>
-
-        <h2 class="heading">Temps forts d'aujourd'hui</h2>
-        <div class="highlight-container">
-            <div class="h-card">
-                <h4 class="h-title" id="humidity"></h4>
-                <img id="humidity-icon" src="" alt="" />
-                <div class="h-value" id="humidity-value"></div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="wind-speed"></h4>
-                <img id="wind-icon" src="" alt="" />
-                <div class="h-value" id="wind-value">
-                    <div class="loader">
-                        <div class="spinner"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="pressure"></h4>
-                <img id="pressure-icon" src="" alt="" />
-                <div class="h-value" id="pressure-value"></div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="sunrise"></h4>
-                <img id="sunrise-icon" src="" alt="" />
-                <div class="h-value" id="sunrise-value"></div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="cloud"></h4>
-                <img id="clouds-icon" src="" alt="" />
-                <div class="h-value" id="cloud-value"></div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="sunset"></h4>
-                <img id="sunset-icon" src="" alt="" />
-                <div class="h-value" id="sunset-value"></div>
-            </div>
-        </div>
-
-
-        <h2 class="heading">Cette semaine</h2>
-
-        <div class="highlight-container">
-            <div class="h-card">
-                <h4 class="h-title" id="h+1"></h4>
-                <div class="h-value" id="H+1Value">
-                </div>
-            </div>
-            <div class="h-card">
-                <h4 class="h-title" id="h+2"></h4>
-                <div class="h-value" id="h+2Value">
-                    <div class="loader">
-                        <div class="spinner"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-        <footer class="footer">
-            <a href="https://github.com/quentinvvn">
-                <i class="fa-brands fa-github"></i> <span>GitHub</span>
-            </a>
-            <a href="https://github.com/quentinvvn/weather-app">
-                <i class="fa-solid fa-code-fork"></i> <span>Fork</span>
-            </a>
-            <a href="https://www.instagram.com/quentinvvn">
-                <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
-            </a>
-        </footer>
     </div>
 </body>
 

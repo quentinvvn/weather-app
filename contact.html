@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel='stylesheet' type='text/css' media='screen' href='contact.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/3100c835f6.js" crossorigin="anonymous"></script>
+  <title>Contact</title>
+</head>
+
+<body>
+  <nav>
+    <div id="search">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Me contacter</a></li><br><br>
+      </ul>
+    </div>
+  </nav>
+  <div class="form-container">
+    <form method="post">
+      <div class="select">
+        <div class="div12">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <input type="text" class="formulaire" name="name" placeholder="Nom / Prenom" required />
+        <div class="div12">*</div>
+      </div>
+      <br />
+      <div class="select">
+        <div class="div12">@</div>
+        <input type="email" class="formulaire" name="email" placeholder="E-mail" required />
+        <div class="div12">*</div>
+      </div>
+      <br />
+      <div class="select">
+        <div class="div12">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <input class="formulaire" type="tel" name="telephone" placeholder="Téléphone" required />
+        <div class="div12">*</div>
+      </div>
+      <br />
+      <div class="select">
+        <textarea name="message"
+          placeholder="Merci de détailler au maximum votre demande afin de facilité nos futurs échanges"
+          required></textarea>
+        <div class="div12">*</div>
+      </div>
+      <hr class="break-form" />
+      <input class="boutton" type="submit" value="Envoyer" placeholder />
+      <div class="form-message"></div>
+    </form>
+  </div>
+</body>
+
+</html>
