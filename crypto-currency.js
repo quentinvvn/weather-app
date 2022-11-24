@@ -96,6 +96,60 @@ function recupCrypto() {
         let mktCapName = document.createTextNode(result[n]["market_cap"]);
         newTrCoin.append(mktCap);
         mktCap.append(mktCapName);
+
+        var xmlns = "http://www.w3.org/2000/svg";
+        let svgTd = document.createElement("td");
+        let svg = document.createElementNS(xmlns, "svg");
+        let g = document.createElementNS(xmlns, "g");
+        svg.setAttribute("width", "90%");
+        g.setAttribute("class", "g");
+
+        newTrCoin.append(svgTd);
+        svgTd.append(svg);
+        svg.append(g);
+
+        for (let i = 167; i > 0; i--) {
+          let x,
+            y,
+            minY = 0,
+            maxY = 0,
+            hauteur;
+
+          let str = result[n]["current_price"];
+
+          x = (result[n]["sparkline_in_7d"]["price"][i] / str) * 500;
+          y = (result[n]["sparkline_in_7d"]["price"][i - 1] / str) * 500;
+
+          if (minY > y) {
+            minY = y;
+            console.log("min: " + minY);
+          }
+
+          if (maxY < y) {
+            maxY = y;
+            console.log(maxY);
+          }
+
+          hauteur = maxY - minY;
+
+          const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
+          line.setAttribute(
+            "style",
+            "fill:none; stroke:red; stroke-width:2; stroke-miterlimit:10; stroke-linecap:round;"
+          );
+          line.setAttribute("x1", i);
+          line.setAttribute("x2", i - 1);
+          line.setAttribute("y1", x);
+          line.setAttribute("y2", y);
+          document.getElementsByClassName("g")[n].appendChild(line);
+          svg.setAttribute(
+            "viewBox",
+            "-1 " + (minY + hauteur / 1.2) + " 164 " + hauteur / 3
+          );
+        }
       }
     });
 }
